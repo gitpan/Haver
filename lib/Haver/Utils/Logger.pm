@@ -18,7 +18,6 @@
 
 # TODO, write POD. Soon.
 # XXX The API for this should be made cleaner. XXX
-
 package Haver::Utils::Logger;
 use strict;
 use warnings;
@@ -42,7 +41,7 @@ our @EXPORT    = qw(error raw note debug);
 our @EXPORT_OK = @EXPORT;
 
 sub create {
-	my ($class, $config) = @_;
+	my ($class, %opts) = @_;
 	POE::Session->create(
 		package_states => 
 		[
@@ -58,18 +57,34 @@ sub create {
 				),
 			},
 		],
-		heap => [],
+		heap => {
+			file => $opts{logfile},
+		},
 	);
 }
 
 sub _start {
 	my ($kernel, $heap) = @_[KERNEL, HEAP];
-	print STDERR "Logging started\n";
+	my $fh;
+	
+	if ($heap->{file} eq '-') {
+		$fh  = \*STDERR;
+	} else {
+		open $fh, ">$heap->{file}" or die "Can't open logfile $heap->{file}: $!";
+	}
+	$heap->{fh} = $fh;
+	print "Logger starts.\n";
+	print "    Logging to ``$heap->{file}''.\n";
 	$kernel->alias_set('Logger');
 }
 
 sub _stop {
-	print STDERR "Logging stops\n";
+	my ($kernel, $heap) = @_[KERNEL, HEAP];
+	unless ($heap->{file} eq '-') {
+		my $fh = $heap->{fh};
+		close $fh;
+	}
+	print STDERR "Logger stops.\n";
 }
 
 sub on_shutdown {
@@ -78,21 +93,25 @@ sub on_shutdown {
 	
 sub on_error {
 	my ($kernel, $heap, $msg) = @_[KERNEL, HEAP, ARG0];
-	print "ERROR: $msg\n";
+	my $fh = $heap->{fh};
+	print $fh "ERROR: $msg\n";
 }
 
 sub on_raw {
 	my ($kernel, $heap, $msg) = @_[KERNEL, HEAP, ARG0];
-	print "RAW: $msg\n";
+	my $fh = $heap->{fh};
+	print $fh "RAW: $msg\n";
 }
 sub on_note {
 	my ($kernel, $heap, $msg) = @_[KERNEL, HEAP, ARG0];
-	print "NOTE: $msg\n";
+	my $fh = $heap->{fh};
+	print $fh "NOTE: $msg\n";
 }
 
 sub on_debug {
 	my ($kernel, $heap, $msg) = @_[KERNEL, HEAP, ARG0];
-	print "DEBUG: $msg\n";
+	my $fh = $heap->{fh};
+	print $fh "DEBUG: $msg\n";
 }
 
 1;

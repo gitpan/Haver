@@ -19,37 +19,31 @@ package Haver::Singleton;
 use strict;
 use warnings;
 
-our $VERSION = "0.001";
+our $VERSION = '0.03';
 use base 'Haver::Base';
 
-sub new { die "Never class 'new' on a singleton class! ($_[0])" }
-
+sub new {
+	die "Never class 'new' on a singleton class! ($_[0])"
+}
+sub _new_instance {
+	my $this = shift;
+	return $this->SUPER::new(@_);
+}
 sub instance {
 	my $this = shift;
 	my $class = ref($this) || $this;
-	my @args = @_;
 
 	no strict 'refs';
 	my $self = "${class}::__INSTANCE__";
 	
-	push (@args, @{"${class}::__INSTANCE_ARGS__"});
 	
 	if (${$self}) {
 		return ${$self};
 	} else {
-		return ${$self} = $this->SUPER::new(@args);
+		return ${$self} = $this->_new_instance(@_);
 	}
 
 }
-
-sub import {
-	my $this = shift;
-	my $class = ref($this) || $this;
-
-	no strict 'refs';
-	push(@{ "${class}::__INSTANCE_ARGS__" }, @_);
-}
-
 1;
 __END__
 

@@ -2,11 +2,12 @@ Changes
 lib/Haver.pm
 lib/Haver/Base.pm
 lib/Haver/Protocol.pm
+lib/Haver/Protocol/Errors.pm
 lib/Haver/Protocol/Filter.pm
 lib/Haver/Singleton.pm
 lib/Haver/Utils/Logger.pm
 MANIFEST			This list of files
 MANIFEST.SKIP
+META.yml
 README
 t/first.t
-META.yml                                 Module meta-data (added by MakeMaker)
