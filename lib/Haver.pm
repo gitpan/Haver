@@ -4,14 +4,13 @@ use 5.008002;
 use strict;
 use warnings;
 
-our $VERSION = '0.02';
+our $VERSION = '0.03';
 
 
 # Preloaded methods go here.
 
 1;
 __END__
-# Below is stub documentation for your module. You'd better edit it!
 
 =head1 NAME
 
@@ -19,37 +18,29 @@ Haver - Common modules for Haver::Server and Haver::Client.
 
 =head1 SYNOPSIS
 
-  use Haver;
-  blah blah blah
+There is none. This module contains no code.
 
 =head1 DESCRIPTION
 
-Stub documentation for Haver, created by h2xs. It looks like the
-author of the extension was negligent enough to leave the stub
-unedited.
-
-Blah blah blah.
+This collection of modules contains
+modules used by both the Haver server and Haver client.
 
 =head2 EXPORT
 
 None by default.
 
-
-
 =head1 SEE ALSO
 
-Mention other useful documentation such as the documentation of
-related modules or operating system documentation (such as man pages
-in UNIX), or any relevant external documentation such as RFCs or
-standards.
+L<Haver::Protocol>, L<Haver::Protocol::Filter>, L<Haver::Base>, L<Haver::Singleton>,
+L<Haver::Utils::Logger>.
 
-If you have a mailing list set up for your module, mention it here.
+L<https://savannah.nongnu.org/projects/haver/>
 
-If you have a web site set up for your module, mention it here.
+
 
 =head1 AUTHOR
 
-Dylan William Hardison, E<lt>dylan@c47.orgE<gt>
+Dylan William Hardison, E<lt>dylanwh@tampabay.rr.comE<gt>
 
 =head1 COPYRIGHT AND LICENSE
 

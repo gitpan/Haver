@@ -1,6 +1,25 @@
-Revision history for Perl extension Haver.
+2004-02-16  dylanwh <dylanwh@tampabay.rr.com>
 
-0.01  Sun Feb 15 22:00:53 2004
-	- original version; created by h2xs 1.23 with options
-		-XA --skip-autoloader -n Haver
+	* lib/Haver/Base.pm: Made the client's output more JRC-like.
+
+2004-02-16  dylanwh <dylanwh@tampabay.rr.com>
+
+	* .cvsignore: Added .cvsignore files.
+
+2004-02-15  bdonlan <bdonlan@bd-home-comp.no-ip.org>
+
+	* MANIFEST, MANIFEST.SKIP: Add MANIFEST.bak and META.yml to
+	MANIFEST.SKIP
+
+2004-02-15  dylanwh <dylanwh@tampabay.rr.com>
+
+	* MANIFEST, MANIFEST.SKIP, MANIFEST.skip, Makefile.PL,
+	lib/Haver.pm: Fixed manifest files.
+
+2004-02-15  dylanwh <dylanwh@tampabay.rr.com>
+
+	* MANIFEST, MANIFEST.skip, Makefile.PL, README, lib/Haver.pm,
+	lib/Haver/Base.pm, lib/Haver/Protocol.pm, lib/Haver/Singleton.pm,
+	lib/Haver/Protocol/Filter.pm, lib/Haver/Utils/Logger.pm,
+	t/test-1.pl: Commiting common stuff.
 

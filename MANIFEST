@@ -6,8 +6,7 @@ lib/Haver/Protocol/Filter.pm
 lib/Haver/Singleton.pm
 lib/Haver/Utils/Logger.pm
 MANIFEST			This list of files
-MANIFEST.bak
 MANIFEST.SKIP
 README
-t/test-1.pl
+t/first.t
 META.yml                                 Module meta-data (added by MakeMaker)

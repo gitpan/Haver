@@ -23,9 +23,8 @@ To install this module type the following:
 
 DEPENDENCIES
 
-This module requires these other modules and libraries:
-
-  blah blah blah
+POE (0.27)
+POE::Filter::Line (0.02)
 
 COPYRIGHT AND LICENCE
 
